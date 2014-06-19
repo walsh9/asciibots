@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Robot</title>
+</head>
+
+<body>
+    <pre id="robot"></pre>
+    <button id="remodel">Remodel</button>
+
+    <script src="asciibots.js"></script>
+    <script>
+    window.onload = function() {
+        var robot = document.getElementById("robot");
+        robot.textContent = Asciibots.bot();
+        var button = document.getElementById("remodel");
+        button.onclick = function(event) {
+            robot.textContent = Asciibots.bot();
+        }
+    }
+    </script>
+</body>
+
+</html>
