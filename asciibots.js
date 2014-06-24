@@ -86,10 +86,10 @@ var Asciibots = (function () {
 };
 
   function myBot( id ) {
-    var botId = (id && (/^\d{3}$/).test(id)) ? String(1000 + parseInt(id, 10)) : String(Math.floor(Math.random() * 999 + 1000)),
-        botString = robots.templates[botId.charAt(1)][0] +
-                    robots.templates[botId.charAt(2)][1] +
-                    robots.templates[botId.charAt(3)][2];
+    var botId = (id && (/^\d{3}$/).test(id)) ? String(1000 + parseInt(id, 10)) : String(Math.floor(Math.random() * 999 + 1000)).slice(1,4).split(""),
+        botString = robots.templates[botId[0]][0] +
+                    robots.templates[botId[1]][1] +
+                    robots.templates[botId[2]][2];
     return botString;
   }
 
