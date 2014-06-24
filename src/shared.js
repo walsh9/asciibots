@@ -1,3 +1,4 @@
+;
 
   function oneBot( id ) {
     var botIdDigits = isValidId(id) ? id.split("") : randomId().split(""),
@@ -20,5 +21,5 @@
     splitBot[0] = botString.split("\n").slice(0,3).join("\n") + "\n";
     splitBot[1] = botString.split("\n").slice(3,5).join("\n") + "\n";
     splitBot[2] = botString.split("\n").slice(5,7).join("\n");
-    return splitBot
+    return splitBot;
   }
