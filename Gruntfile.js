@@ -14,20 +14,24 @@ module.exports = function(grunt) {
       },
       vanilla: {
         src: ['src/vanilla-intro.js', 'src/asciibots.json', 'src/shared.js', 'src/vanilla-outro.js'],
-        dest: 'dist/asciibots.js',
+        dest: 'dist/asciibots.js'
+      },
+      jquery: {
+        src: ['src/jquery-intro.js', 'src/asciibots.json', 'src/shared.js', 'src/jquery-outro.js'],
+        dest: 'dist/jquery/asciibots.js'
       }
     },
     jsbeautifier : {
       options: {
         js: {
           indentChar: " ",
-          indentSize: 2,
+          indentSize: 2
         }
       },
-      files : 'dist/asciibots.js'
+      files : ['dist/asciibots.js', 'dist/jquery/asciibots.js']
     },
     jshint: {
-      dist: 'dist/asciibots.js'
+      dist: ['dist/asciibots.js', 'dist/jquery/asciibots.js']
     }
   });
   
