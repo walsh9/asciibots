@@ -16,11 +16,19 @@ var Asciibots = (function () {
   };
 
   function oneBot( id ) {
-    var botId = (id && (/^\d{3}$/).test(id)) ? String(1000 + parseInt(id, 10)) : String(Math.floor(Math.random() * 999 + 1000)).slice(1,4).split(""),
-        botString = botSplit( robots.templates[botId[0]] )[0] +
-                    botSplit( robots.templates[botId[1]] )[1] +
-                    botSplit( robots.templates[botId[2]] )[2];
+    var botIdDigits = isValidId(id) ? id.split("") : randomId().split(""),
+        botString = botSplit( robots.templates[botIdDigits[0]] )[0] +
+                    botSplit( robots.templates[botIdDigits[1]] )[1] +
+                    botSplit( robots.templates[botIdDigits[2]] )[2];
     return botString;
+  }
+
+  function isValidId ( id ) {
+    return  (id && (/^\d{3}$/).test(id));
+  }
+
+  function randomId () {
+    return String(Math.floor(Math.random() * 999 + 1000)).slice(1,4);
   }
 
   function botSplit ( botString ) {
