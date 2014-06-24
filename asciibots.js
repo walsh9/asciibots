@@ -85,12 +85,6 @@ var Asciibots = (function () {
   }
 };
 
-  function escapeHtml( str ) {
-    var div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  }
-
   function myBot( id ) {
     var botId = (id && (/^\d{3}$/).test(id)) ? String(1000 + parseInt(id, 10)) : String(Math.floor(Math.random() * 999 + 1000)),
         botString = robots.templates[botId.charAt(1)][0] +
