@@ -30,20 +30,30 @@ module.exports = function(grunt) {
       },
       files : ['dist/asciibots.js', 'dist/jquery/asciibots.js']
     },
+    uglify: {
+      vanilla: {
+        files: {
+          'dist/asciibots.min.js': ['dist/asciibots.js']
+        }
+      },
+      jquery: {
+        files: {
+          'dist/jquery/asciibots.min.js': ['dist/jquery/asciibots.js']
+        }
+      }
+    },
     jshint: {
       dist: ['dist/asciibots.js', 'dist/jquery/asciibots.js']
     }
   });
   
-
-
-  // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-jsbeautifier');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-
+  
   // Default task(s).
-  grunt.registerTask('default', ['convert', 'concat', 'jsbeautifier', 'jshint']);
+  grunt.registerTask('default', ['convert', 'concat', 'jsbeautifier', 'jshint', 'uglify']);
 
 };
