@@ -1,0 +1,24 @@
+{
+  "name": "asciibots",
+  "version": "0.1.0",
+  "description": "ASCII Robots",
+  "main": "dist/asciibots.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/walsh9/ASCII-Robots.git"
+  },
+  "author": "Matthew Walsh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/walsh9/ASCII-Robots/issues"
+  },
+  "homepage": "https://github.com/walsh9/ASCII-Robots",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-convert": "^0.1.11"
+  }
+}

@@ -1,0 +1,6 @@
+
+  return {
+    bot: oneBot
+  };
+
+})();
