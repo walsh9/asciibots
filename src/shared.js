@@ -7,11 +7,11 @@
   }
 
   function isValidId ( id ) {
-    return  (id && (/^\d{3}$/).test(id));
+    return  (id && (/^[0-9a-f]{3}$/).test(id));
   }
 
   function randomId () {
-    return String(Math.floor(Math.random() * 999 + 1000)).slice(1,4);
+    return Math.floor(Math.random() * 0xfff + 0x1000).toString(16).slice(1,4);
   }
 
   function botSplit ( botString ) {
