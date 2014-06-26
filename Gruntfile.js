@@ -4,20 +4,26 @@ module.exports = function(grunt) {
       yaml2json: {
         files: [{
           src: 'src/data/asciibots.yml', 
-          dest: 'src/asciibots.json'
+          dest: 'src/temp/asciibots.json'
         }]
       }
     },
     concat: {
-      options: {
-        separator: ""
+      wrapjson: {
+        src: ['src/temp/asciibots.json'],
+        dest: 'src/temp/bots.js',
+        options: {
+          separator: "",
+          banner: "robots = ",
+          footer: ";"
+        }
       },
       vanilla: {
-        src: ['src/vanilla-intro.js', 'src/asciibots.json', 'src/shared.js', 'src/vanilla-outro.js'],
+        src: ['src/vanilla-intro.js', 'src/temp/bots.js', 'src/shared.js', 'src/vanilla-outro.js'],
         dest: 'dist/asciibots.js'
       },
       jquery: {
-        src: ['src/jquery-intro.js', 'src/asciibots.json', 'src/shared.js', 'src/jquery-outro.js'],
+        src: ['src/jquery-intro.js', 'src/temp/bots.js', 'src/shared.js', 'src/jquery-outro.js'],
         dest: 'dist/jquery/asciibots.js'
       }
     },

@@ -1,5 +1,3 @@
-;
-
   function oneBot( id ) {
     var botIdDigits = isValidId(id) ? id.split("") : randomId().split(""),
         botString = botSplit( robots.templates[botIdDigits[0]] )[0] +

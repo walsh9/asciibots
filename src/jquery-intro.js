@@ -6,5 +6,4 @@
       return this;
     });
   };
-
-  var robots = 
+  
