@@ -127,3 +127,39 @@ templates:
     '=c|___|
        /7 [|
      \/7  [|_
+optional:
+ eyes:
+  - o o
+  - p q
+  - q p
+  - d b
+  - b d
+  - ooo
+  - "[o]"
+  - 9 9
+  - 6=6
+  - u u
+  - n n
+  - q q
+  - d d
+  - - -
+  - 0 0
+  - O O
+  - e e
+ mouth:
+  - -
+  - =
+  - o
+  - O
+  - 0
+  - #
+  - u
+  - v
+  - n
+  - r 
+  - `
+  - ^
+  - A
+  - -
+  - -
+  - -
