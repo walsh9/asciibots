@@ -85,37 +85,3 @@ Or any other combination. If you don't specify a parameter it's random!
 ## License
 
 The 1k ASCII Mini Robot Factory is licensed under the MIT License.
-
-For example:
-
-`Asciibots.bot('012')`
-
-Always results in
-
-        ___T_     
-       | o o |    
-       |__-__|    
-     o==|ooo|==o  
-        |___|     
-       . \_/  .   
-      . .:::.. .   
-
-Call the .bot() method with no parameters to get a random robot as a text string.
-
-`Asciibots.bot()`
-
-Has a 1/1000 chance of producing
-
-         T___      
-         |[o]|     
-         \_-_/     
-    ()ooo|\=/|ooo()
-         |___|     
-         // \\     
-        _\\ //_    
-
-Or any other combination. If you don't specify a parameter it's random!
-
-## License
-
-The 1k ASCII Mini Robot Factory is licensed under the MIT License.
