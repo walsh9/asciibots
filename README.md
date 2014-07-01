@@ -50,61 +50,27 @@ Include the script in your page.
 
 `<script src="asciibots.js"></script>`
 
-Call the `.bot()` method on the `Asciibots` object with a specific 3-digit ID to get a particular combination as a text string. The first digit indcates the robot's head, the second, its body, and the third, its legs or whatever. See above for reference. 
+Call the `.bot()` method on the `Asciibots` object with a specific 3-5 digit ID to get a particular combination as a text string. The final three digits indcate the robot's head, its body, and its legs or whatever. See above for reference. The id may be preceded with 2 additional digits which will change its 'eyes' and 'mouth'. 
 
 For example:
 
-`Asciibots.bot('012')`
+`Asciibots.bot('13059')`
 
-Always results in
+Always results in:
 
-        ___T_     
-       | o o |    
-       |__-__|    
-     o==|ooo|==o  
-        |___|     
-       . \_/  .   
-      . .:::.. .   
+        \.===./
+        | d b |
+         \_=_/
+      7--|=0=|--<
+         |___|
+         |_|_|
+         /_|_\
 
 Call the .bot() method with no parameters to get a random robot as a text string.
 
 `Asciibots.bot()`
 
-Has a 1/1000 chance of producing
-
-         T___      
-         |[o]|     
-         \_-_/     
-    ()ooo|\=/|ooo()
-         |___|     
-         // \\     
-        _\\ //_    
-
-Or any other combination. If you don't specify a parameter it's random!
-
-## License
-
-The 1k ASCII Mini Robot Factory is licensed under the MIT License.
-
-For example:
-
-`Asciibots.bot('012')`
-
-Always results in
-
-        ___T_     
-       | o o |    
-       |__-__|    
-     o==|ooo|==o  
-        |___|     
-       . \_/  .   
-      . .:::.. .   
-
-Call the .bot() method with no parameters to get a random robot as a text string.
-
-`Asciibots.bot()`
-
-Has a 1/1000 chance of producing
+Has a 1/1048576 chance of producing
 
          T___      
          |[o]|     
