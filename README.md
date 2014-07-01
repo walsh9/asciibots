@@ -1,6 +1,6 @@
-# ASCII Robot Generator
+# asciibots.js 
 
-Based on [1k ASCII Mini Robot Factory](https://github.com/walsh9/1k-ASCII-Robots), but written in readable modern Javascript, without the constraints of fittitng into 1k.
+Based on [1k ASCII Mini Robot Factory](https://github.com/walsh9/1k-ASCII-Robots), but written in readable modern Javascript, without the constraints of fitting into 1k.
 
 Inspired by the classic Tomy Pocket Game, [Robot Factory](http://www.masters.me.uk/pocketeers/Htm-Designs/flipflopfaces.htm), the code generates robots using parts from the models below:
  
@@ -50,7 +50,7 @@ Include the script in your page.
 
 `<script src="asciibots.js"></script>`
 
-Call the `.bot()` method on the `Asciibots` object with a specific 3-5 digit ID to get a particular combination as a text string. The final three digits indcate the robot's head, its body, and its legs or whatever. See above for reference. The id may be preceded with 2 additional digits which will change its 'eyes' and 'mouth'. 
+Call the `.bot()` method on the `Asciibots` object with a specific 3-5 hex digit ID to get a particular combination as a text string. The final three digits indcate the robot's head, its body, and its legs or whatever. See above for reference. The id may be preceded with 2 additional digits which will change its 'eyes' and 'mouth'. 
 
 For example:
 
@@ -82,6 +82,10 @@ Has a 1/1048576 chance of producing
 
 Or any other combination. If you don't specify a parameter it's random!
 
+#jQuery Plugin
+
+There's also a jQuery plugin.  This adds the `asciibot()` method to jQuery objects. When you call the `asciibot()` method it will set the text contents of each matched element to an ASCII robot.  Same as the vanilla Javascript version, if you pass a 3-5 digit hex string you will get a specific robot.  If you leave the parameters empty you will get a random robot.
+
 ## License
 
-The 1k ASCII Mini Robot Factory is licensed under the MIT License.
+asciibots.js is licensed under the MIT License.
