@@ -8,16 +8,75 @@
 
 <body>
     <pre id="robot"></pre>
-    <button id="remodel">Remodel</button>
+    <div id="controls">
+      <h2>BOT ID: </h2><span id="botid"></span>
+      <h2>SPEAKER</h2>
+        <button id="dec0">&lt;</button>
+        <span id="bot0"> 0 </span>
+        <button id="inc0">></button>
+      <h2>OPTICS</h2>
+        <button id="dec1">&lt;</button>
+        <span id="bot1"> 0 </span>
+        <button id="inc1">></button>
+      <h2>BRAINCAN</h2>
+        <button id="dec2">&lt;</button>
+        <span id="bot2"> 0 </span>
+        <button id="inc2">></button>
+      <h2>CHASSIS</h2>
+        <button id="dec3">&lt;</button>
+        <span id="bot3"> 0 </span>
+        <button id="inc3">></button>
+      <h2>LOCOMOTION</h2>
+        <button id="dec4">&lt;</button>
+        <span id="bot4"> 0 </span>
+        <button id="inc4">></button>
+    </div>
+
+    <button id="random">Random</button>
 
     <script src="asciibots.js"></script>
     <script>
-        var robot = document.getElementById("robot");
-        robot.textContent = Asciibots.bot("13059");
-        var button = document.getElementById("remodel");
-        button.onclick = function(event) {
-            robot.textContent = Asciibots.bot();
-        }
+       ( function() {
+          var botId = "00000";
+          randomize();
+
+          function updateView() {
+            for (var i = 0; i < 5; i++) {
+              document.getElementById("bot" + i).textContent = botId.split("")[i];
+            }
+            document.getElementById("botid").textContent = botId;
+            document.getElementById("robot").textContent = Asciibots.bot(botId);
+          }
+
+          function inc(index) {
+            var digit = String(botId.charAt(index));
+            digit = ((parseInt(digit, 16) + 17) % 16).toString(16);
+            botId = botId.slice(0, index) + "" + digit + "" + botId.slice(index + 1);
+            updateView();
+          }
+
+          function dec(index) {
+            var digit = botId.charAt(index);
+            digit = ((parseInt(digit, 16) + 15) % 16).toString(16);
+            botId = String(botId.slice(0, index)) + digit + String(botId.slice(index + 1));
+            updateView();
+          }
+
+          function randomize() {
+            botId = Math.floor(Math.random() * 0xfffff + 0x100000).toString(16).slice(1, 6);
+            updateView();
+          }
+
+          for (var i = 0; i < 5; i++) {
+              (function (index) {
+                document.getElementById("dec" + index).addEventListener("click", function() {dec(index)});
+                document.getElementById("inc" + index).addEventListener("click", function() {inc(index)});
+              }(i));
+          }
+          document.getElementById("random").addEventListener("click", randomize);
+
+
+        }())
     </script>
 </body>
 
