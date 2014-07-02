@@ -1,8 +1,8 @@
   function oneBot(id) {
     var botIdDigits = isValidId(id) ? id.split("") : randomId().split(""),
-      botString = botSplit(robots.templates[botIdDigits[0]])[0] +
-      botSplit(robots.templates[botIdDigits[1]])[1] +
-      botSplit(robots.templates[botIdDigits[2]])[2];
+      botString = botSplit(robots.templates[botIdDigits[botIdDigits.length - 3]])[0] +
+      botSplit(robots.templates[botIdDigits[botIdDigits.length - 2]])[1] +
+      botSplit(robots.templates[botIdDigits[botIdDigits.length - 1]])[2];
       if (botIdDigits.length >= 4) {
         botString = replaceParts(botIdDigits[botIdDigits.length - 4], botString, robots.spareParts.eyes, 6, 1);
       }

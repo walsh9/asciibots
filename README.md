@@ -58,13 +58,13 @@ For example:
 
 Always results in:
 
-        \.===./
+         ___T_
         | d b |
-         \_=_/
-      7--|=0=|--<
-         |___|
-         |_|_|
-         /_|_\
+        |__=__|
+    }-. /\--o/\ .-{
+       " |___| "
+          |_|
+         (ooo)
 
 Call the .bot() method with no parameters to get a random robot as a text string.
 
