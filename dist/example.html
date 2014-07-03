@@ -4,79 +4,153 @@
 <head>
     <meta charset="UTF-8">
     <title>Robot</title>
+    <style>
+    body {
+        background: #555;
+    }
+    pre#robot {
+        background: #222;
+        color: #aad;
+        width: 230px;
+        margin: 5px;
+        padding: 5px;
+        font-family: inconsolata, consolas, courier, monospace;
+        font-weight: bold;
+    }
+    #botid, span {
+        text-transform: uppercase;
+        font-family: inconsolata, consolas, courier, monospace;
+        font-size: 20px;
+    }
+    span {
+        display: inline-block;
+        width: 3em;
+    }
+    div#controls {
+        width: 200px;
+        margin: 5px;
+        padding: 5px;
+        text-align: center;
+        background: #333;
+        color: #0d0;
+        padding: 20px;
+    }
+    h2 {
+        border-bottom: 1px solid #0d0;
+        font-family: sans-serif;
+        font-weight: normal;
+        font-size: 16px;
+        color: #0d0;
+    }
+    button {
+        border: 0px;
+        background: #111;
+        padding: 5px 15px;
+        color: #0d0;
+        font-weight: bold;
+    }
+    button:hover {
+        box-shadow: inset 0 0 2px 2px #0d0;
+        color: #0f0;
+        transition: .2s ease-in;
+    }
+    button:active {
+        box-shadow: inset 0 0 5px 2px #0d0;
+        background: #0d0;
+        color: #000;
+        transition: .1s ease-in;
+    }
+    </style>
 </head>
 
 <body>
     <pre id="robot"></pre>
     <div id="controls">
-      <h2>BOT ID: </h2><span id="botid"></span>
-      <h2>SPEAKER</h2>
-        <button id="dec0">&lt;</button>
-        <span id="bot0"> 0 </span>
-        <button id="inc0">></button>
-      <h2>OPTICS</h2>
-        <button id="dec1">&lt;</button>
-        <span id="bot1"> 0 </span>
-        <button id="inc1">></button>
-      <h2>BRAINCAN</h2>
-        <button id="dec2">&lt;</button>
-        <span id="bot2"> 0 </span>
-        <button id="inc2">></button>
-      <h2>CHASSIS</h2>
-        <button id="dec3">&lt;</button>
-        <span id="bot3"> 0 </span>
-        <button id="inc3">></button>
-      <h2>LOCOMOTION</h2>
-        <button id="dec4">&lt;</button>
-        <span id="bot4"> 0 </span>
-        <button id="inc4">></button>
+        <div class="controlset">
+            <h2>BOT ID:</h2>
+            <span id="botid"></span>
+        </div>
+        <div class="controlset">
+            <h2>RANDOMIZER:</h2>
+            <button id="random">RANDOM</button>
+        </div>
+        <div class="controlset">
+            <h2>SPEAKER</h2>
+            <button id="dec0">&lt;</button>
+            <span id="bot0">0</span>
+            <button id="inc0">></button>
+        </div>
+        <div class="controlset">
+            <h2>OPTICS</h2>
+            <button id="dec1">&lt;</button>
+            <span id="bot1">0</span>
+            <button id="inc1">></button>
+        </div>
+        <div class="controlset">
+            <h2>BRAINCAN</h2>
+            <button id="dec2">&lt;</button>
+            <span id="bot2">0</span>
+            <button id="inc2">></button>
+        </div>
+        <div class="controlset">
+            <h2>CHASSIS</h2>
+            <button id="dec3">&lt;</button>
+            <span id="bot3">0</span>
+            <button id="inc3">></button>
+        </div>
+        <div class="controlset">
+            <h2>LOCOMOTION</h2>
+            <button id="dec4">&lt;</button>
+            <span id="bot4">0</span>
+            <button id="inc4">></button>
+        </div>
     </div>
-
-    <button id="random">Random</button>
 
     <script src="asciibots.js"></script>
     <script>
-       ( function() {
-          var botId = "00000";
-          randomize();
+    (function() {
+        var botId = "00000";
+        randomize();
 
-          function updateView() {
+        function updateView() {
             for (var i = 0; i < 5; i++) {
-              document.getElementById("bot" + i).textContent = botId.split("")[i];
+                document.getElementById("bot" + i).textContent = botId.split("")[i];
             }
             document.getElementById("botid").textContent = botId;
             document.getElementById("robot").textContent = Asciibots.bot(botId);
-          }
+        }
 
-          function inc(index) {
+        function inc(index) {
             var digit = String(botId.charAt(index));
             digit = ((parseInt(digit, 16) + 17) % 16).toString(16);
             botId = botId.slice(0, index) + "" + digit + "" + botId.slice(index + 1);
             updateView();
-          }
+        }
 
-          function dec(index) {
+        function dec(index) {
             var digit = botId.charAt(index);
             digit = ((parseInt(digit, 16) + 15) % 16).toString(16);
             botId = String(botId.slice(0, index)) + digit + String(botId.slice(index + 1));
             updateView();
-          }
+        }
 
-          function randomize() {
+        function randomize() {
             botId = Math.floor(Math.random() * 0xfffff + 0x100000).toString(16).slice(1, 6);
             updateView();
-          }
+        }
 
-          for (var i = 0; i < 5; i++) {
-              (function (index) {
-                document.getElementById("dec" + index).addEventListener("click", function() {dec(index)});
-                document.getElementById("inc" + index).addEventListener("click", function() {inc(index)});
-              }(i));
-          }
-          document.getElementById("random").addEventListener("click", randomize);
-
-
-        }())
+        for (var i = 0; i < 5; i++) {
+            (function(index) {
+                document.getElementById("dec" + index).addEventListener("click", function() {
+                    dec(index)
+                });
+                document.getElementById("inc" + index).addEventListener("click", function() {
+                    inc(index)
+                });
+            }(i));
+        }
+        document.getElementById("random").addEventListener("click", randomize);
+    }())
     </script>
 </body>
 
