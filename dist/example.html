@@ -8,11 +8,19 @@
     body {
         background: #555;
     }
-    pre#robot {
-        background: #222;
-        color: #aad;
-        width: 230px;
+    #botwrapper {
+        max-width: 300px;
         margin: 5px;
+        padding: 5px;
+        background: #222;
+        text-align:center;
+    }
+
+    pre#robot {
+        color: #aad;
+        display: inline-block;
+        text-align:left;
+        margin: 0;        
         padding: 5px;
         font-family: inconsolata, consolas, courier, monospace;
         font-weight: bold;
@@ -27,7 +35,7 @@
         width: 3em;
     }
     div#controls {
-        width: 200px;
+        max-width: 270px;
         margin: 5px;
         padding: 5px;
         text-align: center;
@@ -64,7 +72,9 @@
 </head>
 
 <body>
+    <div id="botwrapper">
     <pre id="robot"></pre>
+    </div>
     <div id="controls">
         <div class="controlset">
             <h2>BOT ID:</h2>
@@ -155,3 +165,4 @@
 </body>
 
 </html>
+
