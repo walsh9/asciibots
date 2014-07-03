@@ -4,14 +4,14 @@ module.exports = function(grunt) {
       yaml2json: {
         files: [{
           src: 'src/data/asciibots.yml', 
-          dest: 'src/temp/asciibots.json'
+          dest: 'build/asciibots.json'
         }]
       }
     },
     concat: {
       wrapjson: {
-        src: ['src/temp/asciibots.json'],
-        dest: 'src/temp/bots.js',
+        src: ['build/asciibots.json'],
+        dest: 'build/bots.js',
         options: {
           separator: "",
           banner: "robots = ",
@@ -19,11 +19,11 @@ module.exports = function(grunt) {
         }
       },
       vanilla: {
-        src: ['src/vanilla-intro.js', 'src/temp/bots.js', 'src/shared.js', 'src/vanilla-outro.js'],
+        src: ['src/vanilla-intro.js', 'build/bots.js', 'src/shared.js', 'src/vanilla-outro.js'],
         dest: 'dist/asciibots.js'
       },
       jquery: {
-        src: ['src/jquery-intro.js', 'src/temp/bots.js', 'src/shared.js', 'src/jquery-outro.js'],
+        src: ['src/jquery-intro.js', 'build/bots.js', 'src/shared.js', 'src/jquery-outro.js'],
         dest: 'dist/jquery/asciibots.js'
       }
     },

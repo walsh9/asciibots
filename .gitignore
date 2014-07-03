@@ -1,0 +1,7 @@
+# Temp files #
+##############
+build/
+
+# Sublime Text files #
+######################
+.sublime-*
