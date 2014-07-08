@@ -8,6 +8,7 @@ module.exports = function(grunt) {
         }]
       }
     },
+
     concat: {
       wrapjson: {
         src: ['build/asciibots.json'],
@@ -27,6 +28,25 @@ module.exports = function(grunt) {
         dest: 'dist/jquery/asciibots.js'
       }
     },
+
+    markdown: {
+      all: {
+        files: [{
+            src: 'src/README.md',
+            dest: 'dist/index.html'
+        }]
+      }
+    },
+
+    copy: {
+      docs: {
+        files: [{
+            src: 'src/README.md',
+            dest: 'README.md'
+        }]
+      }
+    }, 
+
     jsbeautifier : {
       options: {
         js: {
@@ -36,6 +56,7 @@ module.exports = function(grunt) {
       },
       files : ['dist/asciibots.js', 'dist/jquery/asciibots.js']
     },
+
     uglify: {
       vanilla: {
         files: {
@@ -48,18 +69,21 @@ module.exports = function(grunt) {
         }
       }
     },
+
     jshint: {
       dist: ['dist/asciibots.js', 'dist/jquery/asciibots.js']
     }
   });
   
-  grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-jsbeautifier');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-convert');
+  grunt.loadNpmTasks('grunt-jsbeautifier');
+  grunt.loadNpmTasks('grunt-markdown');
+
   // Default task(s).
-  grunt.registerTask('default', ['convert', 'concat', 'jsbeautifier', 'jshint', 'uglify']);
+  grunt.registerTask('default', ['convert', 'concat', 'markdown', 'copy', 'jsbeautifier', 'jshint', 'uglify']);
 
 };

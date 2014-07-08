@@ -1,0 +1,214 @@
+<!DOCTYPE  html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>doc</title>
+    <style>
+      /*github.com style (c) Vasily Polovnyov <vast@whiteants.net>*/
+      pre code {
+        display: block; padding: 0.5em;
+        color: #333;
+        background: #f8f8ff
+      }
+      pre .comment,
+      pre .template_comment,
+      pre .diff .header,
+      pre .javadoc {
+        color: #998;
+        font-style: italic
+      }
+      pre .keyword,
+      pre .css .rule .keyword,
+      pre .winutils,
+      pre .javascript .title,
+      pre .nginx .title,
+      pre .subst,
+      pre .request,
+      pre .status {
+        color: #333;
+        font-weight: bold
+      }
+      pre .number,
+      pre .hexcolor,
+      pre .ruby .constant {
+        color: #099;
+      }
+      pre .string,
+      pre .tag .value,
+      pre .phpdoc,
+      pre .tex .formula {
+        color: #d14
+      }
+      pre .title,
+      pre .id {
+        color: #900;
+        font-weight: bold
+      }
+      pre .javascript .title,
+      pre .lisp .title,
+      pre .clojure .title,
+      pre .subst {
+        font-weight: normal
+      }
+      pre .class .title,
+      pre .haskell .type,
+      pre .vhdl .literal,
+      pre .tex .command {
+        color: #458;
+        font-weight: bold
+      }
+      pre .tag,
+      pre .tag .title,
+      pre .rules .property,
+      pre .django .tag .keyword {
+        color: #000080;
+        font-weight: normal
+      }
+      pre .attribute,
+      pre .variable,
+      pre .lisp .body {
+        color: #008080
+      }
+      pre .regexp {
+        color: #009926
+      }
+      pre .class {
+        color: #458;
+        font-weight: bold
+      }
+      pre .symbol,
+      pre .ruby .symbol .string,
+      pre .lisp .keyword,
+      pre .tex .special,
+      pre .prompt {
+        color: #990073
+      }
+      pre .built_in,
+      pre .lisp .title,
+      pre .clojure .built_in {
+        color: #0086b3
+      }
+      pre .preprocessor,
+      pre .pi,
+      pre .doctype,
+      pre .shebang,
+      pre .cdata {
+        color: #999;
+        font-weight: bold
+      }
+      pre .deletion {
+        background: #fdd
+      }
+      pre .addition {
+        background: #dfd
+      }
+      pre .diff .change {
+        background: #0086b3
+      }
+      pre .chunk {
+        color: #aaa
+      }
+    </style>
+  </head>
+  <body>  
+    <h1 id="asciibots-js">asciibots.js</h1>
+<p>Based on <a href="https://github.com/walsh9/1k-ASCII-Robots">1k ASCII Mini Robot Factory</a>, but written in readable modern Javascript, without the constraints of fitting into 1k.</p>
+<p>Inspired by the classic Tomy Pocket Game, <a href="http://www.masters.me.uk/pocketeers/Htm-Designs/flipflopfaces.htm">Robot Factory</a>, the code generates robots using parts from the models below:</p>
+<pre><code>   #MRF-000        #MRF-111        #MRF-222        #MRF-333
+    &quot;Finn&quot;          &quot;Glork&quot;         &quot;Tilde&quot;         &quot;Scone&quot;
+     ___T_          \.===./          o___o           T___
+    | o o |         | b d |         //0-0\\          |[o]|
+    |__-__|          \_=_/          |\_-_/|          \_-_/
+    /| []|\       o==|ooo|==o       /|(\)|\       7--|=0=|--&lt; 
+  ()/|___|\()        |___|         d |___| b         |___|
+     |_|_|          .&#39;._.&#39;.         . \_/  .         // \\
+     /_|_\          |_| |_|        . .:::.. .       _\\ //_
+
+   #MRF-444        #MRF-555        #MRF-666        #MRF-777
+    &quot;Flrrx&quot;        &quot;Wheldon&quot;        &quot;Omex&quot;         &quot;Ruffle&quot; 
+      )_(            |---|           .---.            Y__
+     |ooo|           |6=6|          } - - {         _/o o\_
+     |_#_|           |_o_|           \_0_/           \_o_/
+ .-._/___\_.-.  }-. /\--o/\ .-{    .=[::+]=.     )=o=|L88|=o=(
+ :&quot;  \___/  &quot;;     &quot; |___| &quot;     ]=&#39; [___] &#39;=[   )=o=|___|=o=(
+     (   )            .&quot;.            /| |\        .  /___\  .
+    __) (__           |_|           [_] [_]     . ..:::::::.  .
+
+   #MRF-888        #MRF-999        #MRF-AAA        #MRF-BBB
+    &quot;Sirn&quot;          &quot;Tozar&quot;         &quot;Ern&quot;           &quot;Plux&quot;
+     .===.           _._._          .=._,=.           .-.
+    //d d\\         -)o o(-        &#39; (q q) `       ._(u u)_.
+    \\_u_//          \_=_/           _)-(_           (_-_)
+    ,=|x|=.     ()ooo|\=/|ooo() .&#39;c .&quot;|_|&quot;. n`.    .=(+++)=.
+    &#39;c/_\  &#39;c        |___|      &#39;--&#39;  /_\  `--&#39; o=&quot;  (___)  &quot;=o
+     /| |\            |_|           _// \\_          (_|_)
+    (0) (0)          (ooo)         /_o| |o_\         (o|o)
+
+   #MRF-CCC        #MRF-DDD        #MRF-EEE        #MRF-FFF
+   &quot;Boltez&quot;         &quot;Tena&quot;         &quot;Boccle&quot;        &quot;Morton&quot;
+     ,_,_,           .===./`          __i          _ _,_,_ _
+     \9 9/          /.n n.\          [p q]         \( q p )/
+     /_-_\          &quot;\_=_/&quot;           ]-[            \_&quot;_/
+   ,&quot;|+  |&quot;.      (m9\:::/\      &gt;===]__o[===&lt;    .==|&gt;o&lt;|==:=L
+   _\|+__|/_         /___\6          [o__]        &#39;=c|___|
+     /  |            [] []           ]| |[           /7 [|
+    _\  |_          /:] [:\         [_| |_]        \/7  [|_</code></pre>
+<h1 id="usage">Usage</h1>
+<p>Include the script in your page.</p>
+<p><code>&lt;script src=&quot;asciibots.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>Call the <code>.bot()</code> method on the <code>Asciibots</code> object with a specific 3-5 hex digit ID to get a particular combination as a text string. The final three digits indcate the robot&#39;s head, its body, and its legs or whatever. See above for reference. The id may be preceded with 2 additional digits which will change its &#39;eyes&#39; and &#39;mouth&#39;. </p>
+<pre><code>ID Examples:
+                _
+               /     T___                 
+        .---3-|      |[o]|     
+        |      \_    \_-_/     
+        | __1__/  o==|ooo|==o  
+        ||     \_    |___|
+        || _6__/     /| |\
+        |||    \_   [_] [_]
+        |||
+   ID: &quot;316&quot;
+
+
+           __.--- Required (head: 0, body: 5, legs: 9)
+          |||    
+   ID: &quot;13059&quot;
+        ||
+        &#39;&#39;------- Optional (mouth: 1, eyes: 3)
+
+     ___T_
+    | d b |
+    |__=__|
+}-. /\--o/\ .-{
+   &quot; |___| &quot;
+      |_|
+     (ooo)</code></pre>
+<p>Calling:</p>
+<p><code>Asciibots.bot(&#39;13059&#39;)</code></p>
+<p>Always results in:</p>
+<pre><code>     ___T_
+    | d b |
+    |__=__|
+}-. /\--o/\ .-{
+   &quot; |___| &quot;
+      |_|
+     (ooo)</code></pre>
+<p>Call the .bot() method with no parameters to get a random robot as a text string.</p>
+<p><code>Asciibots.bot()</code></p>
+<p>Has a 1/1048576 chance of producing</p>
+<pre><code>     T___      
+     |[o]|     
+     \_-_/     
+()ooo|\=/|ooo()
+     |___|     
+     // \\     
+    _\\ //_    </code></pre>
+<p>Or any other combination. If you don&#39;t specify a parameter it&#39;s random!</p>
+<h1 id="jquery-plugin">jQuery Plugin</h1>
+<p>There&#39;s also a jQuery plugin.  This adds the <code>asciibot()</code> method to jQuery objects. When you call the <code>asciibot()</code> method it will set the text contents of each matched element to an ASCII robot.  Same as the vanilla Javascript version, if you pass a 3-5 digit hex string you will get a specific robot.  If you leave the parameters empty you will get a random robot.</p>
+<h2 id="license">License</h2>
+<p>asciibots.js is licensed under the MIT License.</p>
+
+  </body>
+</html>
