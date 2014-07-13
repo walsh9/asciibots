@@ -5,3 +5,12 @@ build/
 # Sublime Text files #
 ######################
 .sublime-*
+
+# Logs #
+########
+
+*.log
+
+# node.js modules #
+###################
+node_modules/
