@@ -9,7 +9,7 @@ QUnit.test( "Valid ids are considered valid", function( assert ) {
   assert.ok( idHelper.isValid("z", 1, 3, 36) );
 });
 
-QUnit.test( "Invalid ids are considered valid", function( assert ) {
+QUnit.test( "Invalid ids are considered invalid", function( assert ) {
   assert.ok( !idHelper.isValid("9-9", 3, 5, 10) );
   assert.ok( !idHelper.isValid("99", 3, 5, 10) );
   assert.ok( !idHelper.isValid("999999", 3, 5, 10) );
