@@ -20,11 +20,11 @@ module.exports = function(grunt) {
         }
       },
       vanilla: {
-        src: ['src/vanilla-intro.js', 'build/bots.js', 'src/shared.js', 'src/vanilla-outro.js'],
+        src: ['src/vanilla-intro.js', 'build/bots.js', 'src/idhelper.js', 'src/shared.js', 'src/vanilla-outro.js'],
         dest: 'dist/asciibots.js'
       },
       jquery: {
-        src: ['src/jquery-intro.js', 'build/bots.js', 'src/shared.js', 'src/jquery-outro.js'],
+        src: ['src/jquery-intro.js', 'build/bots.js', 'src/idhelper.js', 'src/shared.js', 'src/jquery-outro.js'],
         dest: 'dist/jquery/asciibots.js'
       }
     },

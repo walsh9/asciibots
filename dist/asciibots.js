@@ -59,8 +59,33 @@ var Asciibots = (function() {
     }
   };
 
+  var idHelper = {
+
+    isValid: function(id, minlength, maxlength, radix) {
+      var range = "";
+      if (radix < 2 || radix > 36) {
+        throw "RangeError: radix must be an integer at least 2 and no greater than 36";
+      } else if (radix <= 10) {
+        range = "0-" + radix - 1;
+      } else {
+        range = "0-9a-" + (radix - 1).toString(radix);
+      }
+      var re = new RegExp("^[" + range + "]{" + minlength + "," + maxlength + "}$");
+      return re.test(id);
+    },
+
+    random: function(length, radix) {
+      var id = "";
+      for (var i = length; i > 0; i--) {
+        id = id + Math.floor(Math.random() * radix).toString(radix);
+      }
+      return id;
+    }
+
+  };
+
   function oneBot(id) {
-    var botIdDigits = isValidId(id) ? id.split("") : randomId().split(""),
+    var botIdDigits = idHelper.isValid(id, 3, 5, 16) ? id.split("") : idHelper.random(5, 16).split(""),
       botString = botSplit(robots.templates[botIdDigits[botIdDigits.length - 3]])[0] +
       botSplit(robots.templates[botIdDigits[botIdDigits.length - 2]])[1] +
       botSplit(robots.templates[botIdDigits[botIdDigits.length - 1]])[2];
@@ -71,14 +96,6 @@ var Asciibots = (function() {
       botString = replaceParts(botIdDigits[botIdDigits.length - 5], botString, robots.spareParts.mouths, 7, 2);
     }
     return botString;
-  }
-
-  function isValidId(id) {
-    return (id && (/^[0-9a-f]{3,5}$/).test(id));
-  }
-
-  function randomId() {
-    return Math.floor(Math.random() * 0xfffff + 0x100000).toString(16).slice(1, 6);
   }
 
   function replaceParts(id, botString, parts, x, y) {
@@ -95,7 +112,6 @@ var Asciibots = (function() {
     splitBot[2] = botString.split("\n").slice(5, 7).join("\n");
     return splitBot;
   }
-
 
   return {
     bot: oneBot
