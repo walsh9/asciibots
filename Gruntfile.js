@@ -72,18 +72,24 @@ module.exports = function(grunt) {
 
     jshint: {
       dist: ['dist/asciibots.js', 'dist/jquery/asciibots.js']
+    },
+
+    qunit: {
+      all: ['test/**/*.html']
     }
   });
   
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-jsbeautifier');
   grunt.loadNpmTasks('grunt-markdown');
 
   // Default task(s).
-  grunt.registerTask('default', ['convert', 'concat', 'markdown', 'copy', 'jsbeautifier', 'jshint', 'uglify']);
+  grunt.registerTask('default', ['convert', 'concat', 'markdown', 'copy', 'jsbeautifier', 'jshint', 'qunit', 'uglify']);
+  grunt.registerTask('test', ['jshint', 'qunit']);
 
 };
