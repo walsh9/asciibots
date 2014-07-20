@@ -11,7 +11,7 @@ var idHelper = {
       range = "0-9a-" + (radix - 1).toString(radix);
     }
     var re = new RegExp("^[" + range + "]{" + minlength + "," + maxlength + "}$");
-    return re.test(id.toLowerCase());
+    return ( id && re.test(id.toLowerCase()) );
   },
 
   random: function (length, radix) {
