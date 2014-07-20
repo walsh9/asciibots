@@ -22,7 +22,7 @@ QUnit.test( "Invalid ids are considered invalid", function( assert ) {
   assert.ok( !idHelper.isValid("zzz", 3, 3, 35) );
   assert.ok( !idHelper.isValid("", 1, 3, 35) );
   assert.ok( !idHelper.isValid("10201", 1, 4, 10) );
-  assert.ok( !idHelper.isValid("", 1, 3, 35) );
+  assert.ok( !idHelper.isValid(undefined, 1, 3, 35) );
 });
 
 QUnit.test( "Invalid radix throws exception (isValid)", function( assert ) {
