@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Robot</title>
+</head>
+
+<body>
+    <pre class="robot"></pre>
+    <pre class="robot"></pre>
+    <pre class="robot"></pre>
+    <button id="remodel">Remodel</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../jquery/asciibots.js"></script>
+    <script>
+        $(".robot").asciibot("13059");
+        $("#remodel").click( function () { $(".robot").asciibot(); } );
+    </script>
+</body>
+
+</html>

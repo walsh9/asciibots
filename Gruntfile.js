@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       all: {
         files: [{
             src: 'src/README.md',
-            dest: 'dist/index.html'
+            dest: 'dist/readme.html'
         }]
       }
     },
@@ -44,6 +44,12 @@ module.exports = function(grunt) {
             src: 'src/README.md',
             dest: 'README.md'
         }]
+      },
+      www: {
+        expand: true,
+        cwd: 'src/',
+        src: ['index.html','demo*/*'],
+        dest: 'dist/'
       }
     }, 
 
