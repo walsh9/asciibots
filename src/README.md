@@ -1,6 +1,6 @@
 # asciibots.js 
 
-Based on [1k ASCII Mini Robot Factory](https://github.com/walsh9/1k-ASCII-Robots), but written in readable modern Javascript, without the constraints of fitting into 1k.
+Based on [1k ASCII Mini Robot Factory](https://github.com/walsh9/1k-asciibots), but written in readable modern Javascript, without the constraints of fitting into 1k.
 
 Inspired by the classic Tomy Pocket Game, [Robot Factory](http://www.masters.me.uk/pocketeers/Htm-Designs/flipflopfaces.htm), the code generates robots using parts from the models below:
  
