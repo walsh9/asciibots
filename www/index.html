@@ -4,75 +4,19 @@
   <meta charset="UTF-8">
   <title>asciibots.js</title>
   <link href='//fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
-  <style>
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: Helvetica, Arial, sans-serif;
-    background: #047893;
-    text-align: center;
-    color: #fff;
-  }
-  #content {
-    margin: 0 15px;
-  }
-  h1 {
-    padding: 15px 0;
-    font-family: Audiowide, sans-serif;
-    font-weight: 400;
-    font-size: 36px;
-    color: #FF9731;
-    text-shadow: 2px 2px #BD5E00;
-    }
-  pre {
-    font-family: Inconsolata, Consolas, fixed-width;
-    font-size: 20px;
-  }
-  .bot {
-    display: inline-block;
-  }
-  #links{
-    list-style: none;
-    margin: 15px 0;
-    font-size: 16px;
-  }
-  #links li {
-    margin: 5px 0;
-  }
-  #links li a {
-    background: #EE7600;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: lowercase;
-    letter-spacing: 3px;
-    color: #fff;
-    display: block;
-    margin: 10px auto;
-    padding: 2px;
-    width: 10em;
-    position: relative;
-    transition: all .1s ease-in;
-    top: 0px;
-    left: 0px;
-    box-shadow: 5px 5px  #BD5E00;
-  }
-  #links li a:active {
-    transition: all .1s ease-in;
-    top: 5px;
-    left: 5px;
-    box-shadow: 0px 0px #BD5E00; 
-  }
+  <link rel="stylesheet" href="css/style.css">
   </style>
 </head>
 <body>
-<div id="content">
+<div id="page">
+<div id="header">
   <h1>asciibots.js</h1>
   <pre class="bot"></pre>
   <pre class="bot"></pre>
   <pre class="bot"></pre>
-  <ul id="links">
+</div>
+<div class="section links">
+  <ul>
     <li><a href="https://github.com/walsh9/asciibots">Github</a></li>
     <li><a href="./demo1.html">Demo1</a></li>
     <li><a href="./demo2.html">Demo2</a></li>
@@ -80,7 +24,8 @@
     <li><a href="./js/jquery/asciibots.js">Download (jQuery plugin)</a></li>
     <li><a href="https://github.com/walsh9/asciibots/blob/master/README.md">Readme</a></li>
   </ul>
-  <a href="https://github.com/walsh9/asciibots"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+</div>
+  <a id="ribbon" href="https://github.com/walsh9/asciibots"><img src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
   <script src="./js/asciibots.js"></script>
   <script>
   (function() {
