@@ -24,7 +24,6 @@
     "grunt-contrib-qunit": "^0.5.2",
     "grunt-contrib-uglify": "^0.5.0",
     "grunt-convert": "^0.1.11",
-    "grunt-jsbeautifier": "^0.2.7",
-    "grunt-markdown": "^0.6.1"
+    "grunt-jsbeautifier": "^0.2.7"
   }
 }

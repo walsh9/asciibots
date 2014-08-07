@@ -29,27 +29,14 @@ module.exports = function(grunt) {
       }
     },
 
-    markdown: {
-      all: {
-        files: [{
-            src: 'src/README.md',
-            dest: 'dist/readme.html'
-        }]
-      }
-    },
-
     copy: {
-      docs: {
-        files: [{
-            src: 'src/README.md',
-            dest: 'README.md'
-        }]
-      },
       www: {
-        expand: true,
-        cwd: 'src/',
-        src: ['index.html','demo*/*'],
-        dest: 'dist/'
+        files: [{
+          expand: true,
+          cwd: 'dist/',
+          src: ['asciibots.js', 'jquery/asciibots.js'],
+          dest: 'www/js/'
+        }]
       }
     }, 
 
@@ -92,10 +79,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-jsbeautifier');
-  grunt.loadNpmTasks('grunt-markdown');
 
   // Default task(s).
-  grunt.registerTask('default', ['convert', 'concat', 'markdown', 'copy', 'jsbeautifier', 'jshint', 'qunit', 'uglify']);
+  grunt.registerTask('default', ['convert', 'concat', 'jsbeautifier', 'jshint', 'qunit', 'uglify', 'copy']);
   grunt.registerTask('test', ['jshint', 'qunit']);
 
 };
