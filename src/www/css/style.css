@@ -48,8 +48,8 @@ body {
 }
 #header span {
     font-family: Audiowide, sans-serif;
-    font-size: 1.25em;
-    /* 20px / 16px */
+    font-size: 1.25em;    /* 20px / 16px */
+    line-height: 1.25;
     font-weight: 400;
 }
 pre.bot {
