@@ -14,3 +14,7 @@ build/
 # node.js modules #
 ###################
 node_modules/
+
+# www build #
+#############
+.grunt/
