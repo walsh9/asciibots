@@ -68,6 +68,11 @@ module.exports = ->
         options:
           archive: 'www/dl/jquery/asciibots.zip'
   
+    'gh-pages':
+      options:
+        base: 'www'
+      src: ['**/*']
+
   # Load Grunt task plugins.
   @loadNpmTasks 'grunt-contrib-concat'
   @loadNpmTasks 'grunt-contrib-compress'
@@ -76,8 +81,10 @@ module.exports = ->
   @loadNpmTasks 'grunt-contrib-qunit'
   @loadNpmTasks 'grunt-contrib-uglify'
   @loadNpmTasks 'grunt-convert'
+  @loadNpmTasks 'grunt-gh-pages'
   @loadNpmTasks 'grunt-jsbeautifier'
 
   # Default task.
   @registerTask 'default', ['convert', 'concat', 'jsbeautifier', 'jshint', 'qunit', 'uglify', 'copy', 'compress']
   @registerTask 'test', ['jshint', 'qunit']
+  @registerTask 'publish', ['gh-pages']
