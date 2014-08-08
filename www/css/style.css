@@ -52,7 +52,7 @@ body {
     font-weight: 400;
 }
 pre.bot {
-    font-family: Inconsolata, Consolas, fixed-width;
+    font-family: Inconsolata, Consolas, Courier New, Courier, monospace;
     font-size: 1.25em;
     /* 20px / 16px */
     display: inline-block;
@@ -105,7 +105,7 @@ button:active, .nav ul a:active {
 }
 .panel span {
     text-transform: uppercase;
-    font-family: inconsolata, consolas, courier, monospace;
+    font-family: Inconsolata, Consolas, Courier New, Courier, monospace;
     font-size: 20px;
     display: inline-block;
     min-width: 3em;
