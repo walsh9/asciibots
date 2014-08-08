@@ -69,10 +69,37 @@ module.exports = function(grunt) {
 
     qunit: {
       all: ['test/**/*.html']
+    },
+
+    compress: {
+      vanilla: {
+        options: {
+          archive: 'www/dl/asciibots.zip'
+        },
+        files: [{
+          expand: true,
+          cwd: 'dist',
+          src: ['asciibots.*'], 
+          dest: '/'
+        }]
+      },
+      jquery: {
+        options: {
+          archive: 'www/dl/jquery/asciibots.zip'
+        },
+        files: [{
+          expand: true,
+          cwd: 'dist/jquery',
+          src: ['asciibots.*'], 
+          dest: '/'
+        }]
+      }
     }
+
   });
   
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
@@ -81,7 +108,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jsbeautifier');
 
   // Default task(s).
-  grunt.registerTask('default', ['convert', 'concat', 'jsbeautifier', 'jshint', 'qunit', 'uglify', 'copy']);
+  grunt.registerTask('default', ['convert', 'concat', 'jsbeautifier', 'jshint', 'qunit', 'uglify', 'copy', 'compress']);
   grunt.registerTask('test', ['jshint', 'qunit']);
 
 };
