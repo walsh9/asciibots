@@ -37,6 +37,7 @@ body {
     font-family: Audiowide, sans-serif;
     font-weight: 400;
     font-size: 2.25em;
+    padding: 5px;
     /* 36px / 16px */
 }
 #header a {
@@ -56,6 +57,7 @@ pre.bot {
     font-size: 1.25em;
     /* 20px / 16px */
     display: inline-block;
+    padding-bottom: 10px;
 }
 .nav ul {
     list-style: none;
