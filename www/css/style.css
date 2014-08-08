@@ -52,7 +52,7 @@ body {
     font-weight: 400;
 }
 pre.bot {
-    font-family: Inconsolata, Consolas, Courier New, Courier, monospace;
+    font-family: Inconsolata, Consolas, fixed-width;
     font-size: 1.25em;
     /* 20px / 16px */
     display: inline-block;
