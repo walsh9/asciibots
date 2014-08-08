@@ -175,6 +175,10 @@ button:active, .nav ul a:active {
 .commenttext a {
     color: #FF9731;
 }
+
+button#add {float: right; margin-right: 15px;}
+button#remove {float: left; margin-left: 15px;}
+
 #ribbon img {
     position: absolute;
     top: 0;
