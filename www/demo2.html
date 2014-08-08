@@ -3,138 +3,127 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Robot</title>
+    <title>asciibots.js: demo2</title>
+    <link href='//fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    </style>
     <style>
-    body {
-        color: white;
-        background: #1E273C;
-        font-family: sans-serif;
-    }
-    #content {
-        margin: 0 15px;
-    }
-    .comment {
-        display: table-row;
-        padding: 0;
-        margin: 0;
-    }
-    .chead {
-        float: left;
-        margin: 5px 0;
-    }
-    .cbody {
-        margin-left: 150px;
-    }
-    .bot {
-        background: #111;
-        padding: 5px;
-        margin: 0;
-        display: block;
-    }
-    .username,
-    .timestamp {
-        text-align: center;
-        display: block;
-    }
-    .username {
-        padding: 3px;
-        color: black;
-        font-weight: bold;
-    }
-    .timestamp {
-        padding: 3px;
-        color: black;
-        font-size: 12px;
-        color: #666;
-        background: #111A30;
-    }
-    .ctext {
-        padding: 20px;
-        background: #4A5368;
-        color: #fff;
-        border: 5px solid #313849;
-        border-radius: 10px;
-        margin: 10px;
-        width: 400px;
-    }
+
     </style>
 </head>
 
 <body>
-    <div id="content">
-        <div class="comment" data-username="BeepBoop">
-            <div class="chead">
-                <pre class="bot"></pre>
-                <span class="username">BeepBoop</span>
+    <div id="page">
+        <div id="header">
+            <a href="/">
+                <h1>asciibots.js</h1>
+            </a>
+            <span>Add charming ASCII robots to your life &amp; site.</span>
+        </div>
+        <div id="comments">
+            <div class="comment" data-username="Roboposter 2048">
+                <span class="username">Roboposter 2048</span>
                 <span class="timestamp">2024.08.05</span>
-            </div>
-            <div class="cbody">
-                <div class="ctext">
+                <pre class="bot"></pre>
+                <div class="commenttext">
                     Did you know you can use asciibots.js to generate unique avatars?
                 </div>
             </div>
-        </div>
-        <div class="comment" data-username="BlipBlop">
-            <div class="chead">
-                <pre class="bot"></pre>
-                <span class="username">BlipBlop</span>
+            <div class="comment" data-username="Eliza">
+                <span class="username">Eliza</span>
                 <span class="timestamp">2024.08.05</span>
-            </div>
-            <div class="cbody">
-                <div class="ctext">
-                    What? You mean store a bot id for each username?
+                <pre class="bot"></pre>
+                <div class="commenttext">
+                    Oh... know I can use asciibots. js to generate unique avatars?
                 </div>
             </div>
-        </div>
-        <div class="comment" data-username="BeepBoop">
-            <div class="chead">
-                <pre class="bot"></pre>
-                <span class="username">BeepBoop</span>
+            <div class="comment" data-username="Roboposter 2048">
+                <span class="username">Roboposter 2048</span>
                 <span class="timestamp">2024.08.05</span>
-            </div>
-            <div class="cbody">
-                <div class="ctext">
-                    No, no, no. You don't need to store anything. Just take an md5 hash of any username or email address or whatever, and use a 5 character segment of the hash as your unique id for the .bot() function. It'll be the same everytime for any string. It's kind of like identicons.
+                <pre class="bot"></pre>
+                <div class="commenttext">
+                    Just take a hash of the username and use 5 characters of the hash for each poster's unique robo id.
                 </div>
             </div>
-        </div>
-        <div class="comment" data-username="BlipBlop">
-            <div class="chead">
-                <pre class="bot"></pre>
-                <span class="username">BlipBlop</span>
+            <div class="comment" data-username="Eliza">
+                <span class="username">Eliza</span>
                 <span class="timestamp">2024.08.05</span>
-            </div>
-            <div class="cbody">
-                <div class="ctext">
-                    Oh...
+                <pre class="bot"></pre>
+                <div class="commenttext">
+                    OK... "Just take a hash of the username and use 5 characters of the hash for each poster's unique robo id". Tell me more.
                 </div>
             </div>
-        </div>
-        <div class="comment" data-username="Terabit">
-            <div class="chead">
-                <pre class="bot"></pre>
-                <span class="username">Terabit</span>
+            <div class="comment" data-username="Replytron">
+                <span class="username">Replytron</span>
                 <span class="timestamp">2024.08.05</span>
+                <pre class="bot"></pre>
+                <div class="commenttext">
+                    I don't get it.
+                </div>
             </div>
-            <div class="cbody">
-                <div class="ctext">
-                    Thanks for the tip guys! I'm off to implement a charming comments system!
+            <div class="comment" data-username="Roboposter 2048">
+                <span class="username">Roboposter 2048</span>
+                <span class="timestamp">2024.08.05</span>
+                <pre class="bot"></pre>
+                <div class="commenttext">
+                    For example, this page generates all the avatars from the usernames like this:
+                    <pre>
+$(".comment").each(function() { 
+/* for each comment */
+    var username = $(this).attr("data-username");
+    /* get the username (here we us a data attribue) */
+    var hash = CryptoJS.MD5(username).toString(CryptoJS.enc.Hex);
+    /* take an md5 hash of it (using CryptoJS) */
+    $(".bot", this).asciibot(hash.slice(-5));
+    /* find the .bot element and apply the asciibot function, 
+     * passing in the last 5 chars of the hash 
+     */
+});
+                    </pre>
+                </div>
+                <div class="comment" data-username="Replytron">
+                    <span class="username">Replytron</span>
+                    <span class="timestamp">2024.08.05</span>
+                    <pre class="bot"></pre>
+                    <div class="commenttext">
+                        Oh, sounds simple enough. Do I have to use jQuery?
+                    </div>
+                </div>
+                <div class="comment" data-username="Roboposter 2048">
+                    <span class="username">Roboposter 2048</span>
+                    <span class="timestamp">2024.08.05</span>
+                    <pre class="bot"></pre>
+                    <div class="commenttext">
+                        Of course not. asciibot.js comes in jQuery and vanilla javascript flavors. And you can 
+                        <a href="/">get it</a> and start using it today.
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <a id="ribbon" href="https://github.com/walsh9/asciibots">
+        <img src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png">
+    </a>
     <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="./js/jquery/asciibots.js"></script>
+    <script src="/js/jquery/asciibots.js"></script>
     <script>
     $(".comment").each(function() {
+    /* for each comment */
         var username = $(this).attr("data-username");
+        /* get the username (here we us a data attribue) */
         var hash = CryptoJS.MD5(username).toString(CryptoJS.enc.Hex);
+        /* take an md5 hash of it (using CryptoJS) */        
+        $(".bot", this).asciibot(hash.slice(-5));
+        /* find the .bot element and apply the asciibot function, 
+         * passing in the last 5 chars of the hash 
+         */
         var hue = Math.floor(parseInt(hash.slice(-6, -5), 16) / 15 * 359);
+        /* bonus. use the 6th to last character of the hash to generate a color */
         $(".username", this).css("background", "hsl(" + hue + ", 100%, 75%)");
         $(".bot", this).css("color", "hsl(" + hue + ", 100%, 75%)");
-        $(".bot", this).asciibot(hash.slice(-5));
     });
     </script>
 </body>
+
 </html>
