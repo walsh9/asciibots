@@ -1,3 +1,7 @@
+/*! asciibots.js - v0.9 - 2014-08-08 
+ **  https://walsh9.github.io/asciibots
+ **  Copyright (c) 2014 Matthew Walsh; Licensed under MIT license. */
+
 var Asciibots = (function() {
 
   robots = {

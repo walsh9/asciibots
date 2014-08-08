@@ -1,5 +1,16 @@
 module.exports = ->
   @initConfig
+    package: @file.readJSON('package.json')
+
+    grunt: @
+
+    banner: """
+      /*! <%= package.name %> - v<%= package.version %> - <%= grunt.template.today('yyyy-mm-dd') %> \
+      **  https://<%= package.homepage %> \
+      **  Copyright (c) <%= grunt.template.today('yyyy') %> <%= package.author %>; Licensed under <%= package.license %> license. */\
+      \
+      
+      """
 
     convert:
       yaml2json:
@@ -17,9 +28,13 @@ module.exports = ->
       vanilla:
         src: ['src/vanilla-intro.js', 'build/bots.js', 'src/idhelper.js', 'src/shared.js', 'src/vanilla-outro.js']
         dest: 'dist/asciibots.js'
+        options:
+          banner: "<%= banner %>"
       jquery:
         src: ['src/jquery-intro.js', 'build/bots.js', 'src/idhelper.js', 'src/shared.js', 'src/jquery-outro.js']
         dest: 'dist/jquery/asciibots.js'
+        options:
+          banner: "<%= banner %>"
 
     jsbeautifier:
       files: ['dist/asciibots.js', 'dist/jquery/asciibots.js']
