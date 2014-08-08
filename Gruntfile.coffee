@@ -43,6 +43,11 @@ module.exports = ->
     copy:
       www:
         expand: true
+        cwd: 'src/www/'
+        src: ['**/*']
+        dest: 'www/'
+      js:
+        expand: true
         cwd: 'dist/'
         src: ['asciibots.js', 'jquery/asciibots.js']
         dest: 'www/js/'
