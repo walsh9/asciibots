@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>asciibots.js: demo1</title>
+    <link href='//fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    </style>
+</head>
+
+<body>
+    <div id="page">
+        <div id="header">
+            <a href="/">
+                <h1>asciibots.js</h1>
+            </a>
+            <span>Add charming ASCII robots to your life &amp; site.</span>
+        </div>
+        <div id="botwrapper" class="section">
+            <pre id="robot" class="bot"></pre>
+        </div>
+        <div id="controls" class="section panel">
+            <div class="controlset">
+                <h2>BOT ID</h2>
+                <span id="botid"></span>
+            </div>
+            <div class="controlset">
+                <h2>RANDOMIZER</h2>
+                <button id="random">RANDOM</button>
+            </div>
+            <div class="controlset">
+                <h2>SPEAKER</h2>
+                <button id="dec0">&lt;</button>
+                <span id="bot0">0</span>
+                <button id="inc0">></button>
+            </div>
+            <div class="controlset">
+                <h2>OPTICS</h2>
+                <button id="dec1">&lt;</button>
+                <span id="bot1">0</span>
+                <button id="inc1">></button>
+            </div>
+            <div class="controlset">
+                <h2>BRAINCAN</h2>
+                <button id="dec2">&lt;</button>
+                <span id="bot2">0</span>
+                <button id="inc2">></button>
+            </div>
+            <div class="controlset">
+                <h2>CHASSIS</h2>
+                <button id="dec3">&lt;</button>
+                <span id="bot3">0</span>
+                <button id="inc3">></button>
+            </div>
+            <div class="controlset">
+                <h2>LOCOMOTION</h2>
+                <button id="dec4">&lt;</button>
+                <span id="bot4">0</span>
+                <button id="inc4">></button>
+            </div>
+        </div>
+    </div>
+    <a id="ribbon" href="https://github.com/walsh9/asciibots">
+        <img src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png">
+    </a>
+    <script src="./js/asciibots.js"></script>
+    <script>
+    (function() {
+        var botId = "00000";
+        randomize();
+
+        function updateView() {
+            for (var i = 0; i < 5; i++) {
+                document.getElementById("bot" + i).textContent = botId.split("")[i];
+            }
+            document.getElementById("botid").textContent = botId;
+            document.getElementById("robot").textContent = Asciibots.bot(botId);
+        }
+
+        function inc(index) {
+            var digit = String(botId.charAt(index));
+            digit = ((parseInt(digit, 16) + 17) % 16).toString(16);
+            botId = botId.slice(0, index) + "" + digit + "" + botId.slice(index + 1);
+            updateView();
+        }
+
+        function dec(index) {
+            var digit = botId.charAt(index);
+            digit = ((parseInt(digit, 16) + 15) % 16).toString(16);
+            botId = String(botId.slice(0, index)) + digit + String(botId.slice(index + 1));
+            updateView();
+        }
+
+        function randomize() {
+            botId = Math.floor(Math.random() * 0xfffff + 0x100000).toString(16).slice(1, 6);
+            updateView();
+        }
+
+        for (var i = 0; i < 5; i++) {
+            (function(index) {
+                document.getElementById("dec" + index).addEventListener("click", function() {
+                    dec(index)
+                });
+                document.getElementById("inc" + index).addEventListener("click", function() {
+                    inc(index)
+                });
+            }(i));
+        }
+        document.getElementById("random").addEventListener("click", randomize);
+    }());
+    </script>
+</body>
+
+</html>

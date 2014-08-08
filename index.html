@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>asciibots.js</title>
+    <link href='//fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+    </style>
+</head>
+
+<body>
+    <div id="page">
+        <div id="header">
+            <a href="/">
+                <h1>asciibots.js</h1>
+            </a>
+            <span>Add charming ASCII robots to your life &amp; site.</span>
+        </div>
+
+        <div id="bots" class="section"><pre class="bot"></pre><pre class="bot"></pre><pre class="bot"></pre></div>
+        <div class="section panel">
+            <button id="remove">-</button>
+            <button id="random">?</button>
+            <button id="add">+</button>
+        </div>
+        <div>asciibots.js is a simple to use Javascript module for generating ASCII robots.</div>
+        <div class="section nav">
+            <ul>
+                <li><a href="https://github.com/walsh9/asciibots">Github</a>
+                </li>
+                <li><a href="/demo1.html">Demo1</a>
+                </li>
+                <li><a href="/demo2.html">Demo2</a>
+                </li>
+                <li><a href="/dl/asciibots.zip">Download</a>
+                </li>
+                <li><a href="/dl/jquery/asciibots.zip">Download (jQuery plugin)</a>
+                </li>
+                <li><a href="https://github.com/walsh9/asciibots/blob/master/README.md">Readme</a>
+                </li>
+            </ul>
+        </div>
+        <a id="ribbon" href="https://github.com/walsh9/asciibots">
+            <img src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png">
+        </a>
+        <script src="./js/asciibots.js"></script>
+        <script>
+        (function() {
+            var botContainer = document.querySelector('#bots');
+
+            function addBot() {
+                var bots = botContainer.querySelectorAll('.bot');
+                var bot = document.createElement('pre');
+                bot.className = "bot";
+                bot.textContent = Asciibots.bot();
+                botContainer.appendChild(bot);
+            }
+
+            function removeBot() {
+                var bots = botContainer.querySelectorAll('.bot');
+                var len = bots.length;
+                if (len > 1) { /* don't remove last bot */
+                    botContainer.removeChild(bots[len - 1]);
+                }
+            }
+
+            function randomizeBots() {
+                var bots = botContainer.querySelectorAll('.bot');
+                for (var i = 0; i < bots.length; i++) {
+                    bots[i].textContent = Asciibots.bot()
+                }
+            }
+
+            randomizeBots();
+            document.getElementById("add").addEventListener("click", addBot);
+            document.getElementById("remove").addEventListener("click", removeBot);
+            document.getElementById("random").addEventListener("click", randomizeBots);
+        })();
+        </script>
+</body>
+
+</html>
