@@ -7,9 +7,6 @@
     <title>asciibots.js: demo2</title>
     <link href='//fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    </style>
-    <style>
-    </style>
 </head>
 
 <body>
@@ -68,17 +65,14 @@
                 <div class="commenttext">
                     For example, this page generates all the avatars from the usernames like this:
                     <pre>
-$(".comment").each(function() { 
-/* for each comment */
-    var username = $(this).attr("data-username");
-    /* get the username (here we us a data attribue) */
-    var hash = CryptoJS.MD5(username).toString(CryptoJS.enc.Hex);
-    /* take an md5 hash of it (using CryptoJS) */
-    $(".bot", this).asciibot(hash.slice(-5));
-    /* find the .bot element and apply the asciibot function, 
-     * passing in the last 5 chars of the hash 
-     */
-});
+/* take an md5 hash of the username (here using CryptoJS) */
+var hash = CryptoJS.MD5(username).toString(CryptoJS.enc.Hex);
+
+/* take 5 characters from the hash as our id*/
+var botId = hash.slice(-5);
+
+/* call .asciibot() with our id. */
+$(".bot", this).asciibot(botId);
                     </pre>
                 </div>
             </div>
@@ -99,9 +93,17 @@ $(".comment").each(function() {
                     <a href="index.html">get it</a> and start using it today.
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
+        </div> <!-- comments -->
+        <form name="commentForm" id="commentForm" class="form">
+            <p>
+            <label>Name: <input name="username" id="username"/></label>
+            </p>
+            <textarea name="commenttext" id="commenttext"></textarea>
+            <p><button type="button" name="submit" id="submit"/>Submit (Demo)</button></p>
+            <label>Preview:</label>
+            <div id="commentpreview"></div>
+        </form>
+    </div><!-- page -->
     <a id="ribbon" href="//github.com/walsh9/asciibots">
         <img src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="//s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png">
     </a>
@@ -109,22 +111,73 @@ $(".comment").each(function() {
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/jquery/asciibots.js"></script>
     <script>
-    $(".comment").each(function() {
-        /* for each comment */
-        var username = $(this).attr("data-username");
-        /* get the username (here we us a data attribue) */
-        var hash = CryptoJS.MD5(username).toString(CryptoJS.enc.Hex);
-        /* take an md5 hash of it (using CryptoJS) */
-        $(".bot", this).asciibot(hash.slice(-5));
-        /* find the .bot element and apply the asciibot function, 
-         * passing in the last 5 chars of the hash
-         */
-        var hue = Math.floor(parseInt(hash.slice(-6, -5), 16) / 15 * 359);
-        /* bonus. use the 6th to last character of the hash to generate a color */
-        $(".username", this).css("background", "hsl(" + hue + ", 100%, 75%)");
-        $(".bot", this).css("color", "hsl(" + hue + ", 100%, 75%)");
+(function () {
+    'use strict';
+    /*global $, CryptoJS */
+
+    $.fn.personalize = function (username) {
+        if (username) {
+            /* take an md5 hash of the username (here using CryptoJS) */
+            var hash = CryptoJS.MD5(username).toString(CryptoJS.enc.Hex),
+            /* take 5 characters from the hash as our id*/
+                botId = hash.slice(-5),
+                hue = Math.floor(parseInt(hash.slice(-6, -5), 16) / 15 * 359);
+            /* call .asciibot() with our id. */
+            $('.bot', this).asciibot(botId);
+            $('.username', this).css('background', 'hsl(' + hue + ', 100%, 75%)');
+            $('.bot', this).css('color', 'hsl(' + hue + ', 100%, 75%)');
+        }
+        return $(this);
+    };
+
+    function createComment(username, date, text) {
+        return $('<div/>', {class: 'comment', attr: {'data-username': username}})
+            .append($('<span/>', {class: 'username', text: username}))
+            .append($('<span/>', {class: 'timestamp', text: date}))
+            .append($('<pre/>', {class: 'bot'}))
+            .append($('<div/>', {class: 'commenttext', text: text}));
+    }
+
+    $.fn.updatePreview = function () {
+        var username = $('#username', this).val() || "Anonymous",
+            commenttext = $('#commenttext', this).val(),
+            date = '2024.08.03',
+            preview = $('#commentpreview', this);
+        preview.html('')
+            .append(createComment(username, date, commenttext).personalize(username));
+
+    };
+
+    $.fn.addComment = function (username, date, text) {
+        $('#comments').append(createComment(username, date, text).personalize(username));
+    };
+
+    $('.comment').each(function () {
+        var username = $(this).attr('data-username');
+        $(this).personalize(username);
     });
-    </script>
+
+    function update() {
+        $('#commentForm').updatePreview();
+    }
+
+    function post() {
+        var username = $('#username').val() || "Anonymous",
+            commenttext = $('#commenttext').val(),
+            date = '2024.08.03';
+        $('.comments').addComment(username, date, commenttext);
+        $('#username').val('');
+        $('#commenttext').val('');
+        $('#commentForm').updatePreview();
+    }
+
+    $('#commentForm')
+        .bind('change', update)
+        .bind('keyup', update);
+    $('#submit').bind('click', post);
+
+}());
+</script>
 </body>
 
 </html>

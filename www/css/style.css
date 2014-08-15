@@ -177,6 +177,12 @@ button:active, .nav ul a:active {
 .commenttext a {
     color: #FF9731;
 }
+.form {
+    margin: 20px auto;
+    padding: 5px;
+    background: #024A5B;
+    border-radius: 10px;
+}
 
 button#add {float: right; margin-right: 15px;}
 button#remove {float: left; margin-left: 15px;}
