@@ -20,7 +20,6 @@
         <div id="comments">
             <div class="comment" data-username="Roboposter 2048">
                 <span class="username">Roboposter 2048</span>
-                <span class="timestamp">2024.08.05</span>
                 <pre class="bot"></pre>
                 <div class="commenttext">
                     Did you know you can use asciibots.js to generate unique avatars?
@@ -28,7 +27,6 @@
             </div>
             <div class="comment" data-username="Eliza">
                 <span class="username">Eliza</span>
-                <span class="timestamp">2024.08.05</span>
                 <pre class="bot"></pre>
                 <div class="commenttext">
                     Oh... know I can use asciibots. js to generate unique avatars?
@@ -36,7 +34,6 @@
             </div>
             <div class="comment" data-username="Roboposter 2048">
                 <span class="username">Roboposter 2048</span>
-                <span class="timestamp">2024.08.05</span>
                 <pre class="bot"></pre>
                 <div class="commenttext">
                     Just take a hash of the username and use 5 characters of the hash for each poster's unique robo id.
@@ -44,7 +41,6 @@
             </div>
             <div class="comment" data-username="Eliza">
                 <span class="username">Eliza</span>
-                <span class="timestamp">2024.08.05</span>
                 <pre class="bot"></pre>
                 <div class="commenttext">
                     OK... "Just take a hash of the username and use 5 characters of the hash for each poster's unique robo id". Tell me more.
@@ -52,7 +48,6 @@
             </div>
             <div class="comment" data-username="Replytron">
                 <span class="username">Replytron</span>
-                <span class="timestamp">2024.08.05</span>
                 <pre class="bot"></pre>
                 <div class="commenttext">
                     I don't get it.
@@ -60,7 +55,6 @@
             </div>
             <div class="comment" data-username="Roboposter 2048">
                 <span class="username">Roboposter 2048</span>
-                <span class="timestamp">2024.08.05</span>
                 <pre class="bot"></pre>
                 <div class="commenttext">
                     For example, this page generates all the avatars from the usernames like this:
@@ -78,7 +72,6 @@ $(".bot", this).asciibot(botId);
             </div>
             <div class="comment" data-username="Replytron">
                 <span class="username">Replytron</span>
-                <span class="timestamp">2024.08.05</span>
                 <pre class="bot"></pre>
                 <div class="commenttext">
                     Oh, sounds simple enough. Do I have to use jQuery?
@@ -86,7 +79,6 @@ $(".bot", this).asciibot(botId);
             </div>
             <div class="comment" data-username="Roboposter 2048">
                 <span class="username">Roboposter 2048</span>
-                <span class="timestamp">2024.08.05</span>
                 <pre class="bot"></pre>
                 <div class="commenttext">
                     Of course not. asciibot.js comes in jQuery and vanilla javascript flavors. And you can
@@ -130,10 +122,9 @@ $(".bot", this).asciibot(botId);
         return $(this);
     };
 
-    function createComment(username, date, text) {
+    function createComment(username, text) {
         return $('<div/>', {class: 'comment', attr: {'data-username': username}})
             .append($('<span/>', {class: 'username', text: username}))
-            .append($('<span/>', {class: 'timestamp', text: date}))
             .append($('<pre/>', {class: 'bot'}))
             .append($('<div/>', {class: 'commenttext', text: text}));
     }
@@ -141,15 +132,14 @@ $(".bot", this).asciibot(botId);
     $.fn.updatePreview = function () {
         var username = $('#username', this).val() || "Anonymous",
             commenttext = $('#commenttext', this).val(),
-            date = '2024.08.03',
             preview = $('#commentpreview', this);
         preview.html('')
-            .append(createComment(username, date, commenttext).personalize(username));
+            .append(createComment(username, commenttext).personalize(username));
 
     };
 
-    $.fn.addComment = function (username, date, text) {
-        $('#comments').append(createComment(username, date, text).personalize(username));
+    $.fn.addComment = function (username, text) {
+        $('#comments').append(createComment(username, text).personalize(username));
     };
 
     $('.comment').each(function () {
@@ -163,9 +153,8 @@ $(".bot", this).asciibot(botId);
 
     function post() {
         var username = $('#username').val() || "Anonymous",
-            commenttext = $('#commenttext').val(),
-            date = '2024.08.03';
-        $('.comments').addComment(username, date, commenttext);
+            commenttext = $('#commenttext').val();
+        $('.comments').addComment(username, commenttext);
         $('#username').val('');
         $('#commenttext').val('');
         $('#commentForm').updatePreview();
