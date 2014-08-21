@@ -157,10 +157,12 @@ $(".bot", this).asciibot(botId);
     function post() {
         var username = $('#username').val() || "Anonymous",
             commenttext = $('#commenttext').val();
-        $('.comments').addComment(username, commenttext);
-        $('#username').val('');
-        $('#commenttext').val('');
-        $('#commentForm').updatePreview();
+        if (commenttext) {
+            $('.comments').addComment(username, commenttext);
+            $('#username').val('');
+            $('#commenttext').val('');
+            $('#commentForm').updatePreview();
+        }
     }
 
     $('#commentForm')
