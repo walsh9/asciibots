@@ -68,6 +68,7 @@
     <script src="js/asciibots.js"></script>
     <script>
     (function() {
+        "use strict";
         var botId = "00000";
         randomize();
 
@@ -82,14 +83,14 @@
         function inc(index) {
             var digit = String(botId.charAt(index));
             digit = ((parseInt(digit, 16) + 17) % 16).toString(16);
-            botId = botId.slice(0, index) + "" + digit + "" + botId.slice(index + 1);
+            botId = botId.slice(0, index)  + digit  + botId.slice(index + 1);
             updateView();
         }
 
         function dec(index) {
             var digit = botId.charAt(index);
             digit = ((parseInt(digit, 16) + 15) % 16).toString(16);
-            botId = String(botId.slice(0, index)) + digit + String(botId.slice(index + 1));
+            botId = botId.slice(0, index) + digit + botId.slice(index + 1);
             updateView();
         }
 
@@ -98,15 +99,13 @@
             updateView();
         }
 
+        function createHandler(fn, i) {
+            return function () { fn(i); };
+        }
+
         for (var i = 0; i < 5; i++) {
-            (function(index) {
-                document.getElementById("dec" + index).addEventListener("click", function() {
-                    dec(index)
-                });
-                document.getElementById("inc" + index).addEventListener("click", function() {
-                    inc(index)
-                });
-            }(i));
+            document.getElementById("dec" + i).addEventListener("click", createHandler(dec, i));
+            document.getElementById("inc" + i).addEventListener("click", createHandler(inc, i));
         }
         document.getElementById("random").addEventListener("click", randomize);
     }());
