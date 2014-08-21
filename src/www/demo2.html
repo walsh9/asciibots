@@ -113,11 +113,13 @@ $(".bot", this).asciibot(botId);
             var hash = CryptoJS.MD5(username).toString(CryptoJS.enc.Hex),
             /* take 5 characters from the hash as our id*/
                 botId = hash.slice(-5),
-                hue = Math.floor(parseInt(hash.slice(-6, -5), 16) / 15 * 359);
+                hue = Math.floor(parseInt(hash.slice(-6, -5), 16) / 15 * 359),
+                color = "hsl(" + hue + ", 100%, 75%)";
             /* call .asciibot() with our id. */
-            $('.bot', this).asciibot(botId);
-            $('.username', this).css('background', 'hsl(' + hue + ', 100%, 75%)');
-            $('.bot', this).css('color', 'hsl(' + hue + ', 100%, 75%)');
+            $('.bot', this)
+                .asciibot(botId)
+                .css('color', color);
+            $('.username', this).css('background', color);
         }
         return $(this);
     };
@@ -145,11 +147,6 @@ $(".bot", this).asciibot(botId);
         $('#comments').append(createComment(username, text).personalize(username));
     };
 
-    $('.comment').each(function () {
-        var username = $(this).attr('data-username');
-        $(this).personalize(username);
-    });
-
     function update() {
         $('#commentForm').updatePreview();
     }
@@ -164,6 +161,11 @@ $(".bot", this).asciibot(botId);
             $('#commentForm').updatePreview();
         }
     }
+
+    $('.comment').each(function () {
+        var username = $(this).attr('data-username');
+        $(this).personalize(username);
+    });
 
     $('#commentForm')
         .bind('change', update)
