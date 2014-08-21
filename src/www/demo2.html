@@ -130,11 +130,14 @@ $(".bot", this).asciibot(botId);
     }
 
     $.fn.updatePreview = function () {
-        var username = $('#username', this).val() || "Anonymous",
-            commenttext = $('#commenttext', this).val(),
-            preview = $('#commentpreview', this);
-        preview.html('')
-            .append(createComment(username, commenttext).personalize(username));
+        if ($('#commenttext', this).val()) {
+            var username = $('#username', this).val() || "Anonymous",
+                commenttext = $('#commenttext', this).val();
+            $('#commentpreview', this).html('')
+                .append(createComment(username, commenttext).personalize(username));
+        } else {
+            $('#commentpreview', this).html('');
+        }
 
     };
 
