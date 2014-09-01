@@ -1,6 +1,6 @@
 {
   "name": "asciibots.js",
-  "version": "0.9",
+  "version": "1.0",
   "description": "ASCII Robots",
   "main": "dist/asciibots.js",
   "scripts": {

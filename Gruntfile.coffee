@@ -8,8 +8,7 @@ module.exports = ->
       /*! <%= package.name %> - v<%= package.version %> - <%= grunt.template.today('yyyy-mm-dd') %> \
       **  https://<%= package.homepage %> \
       **  Copyright (c) <%= grunt.template.today('yyyy') %> <%= package.author %>; Licensed under <%= package.license %> license. */\
-      \
-      
+
       """
 
     convert:
@@ -41,7 +40,7 @@ module.exports = ->
       options:
         js: 
           indentChar: " "
-          indentSize: 2
+          indentSize: 4
 
     jshint:
       dist: ['dist/asciibots.js', 'dist/jquery/asciibots.js']

@@ -1,2 +1,1 @@
 var Asciibots = (function () {
-  

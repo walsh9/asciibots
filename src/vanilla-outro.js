@@ -1,6 +1,4 @@
-
-  return {
-    bot: oneBot
-  };
-
+    return {
+        bot: oneBot
+    };
 })();
