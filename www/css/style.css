@@ -67,7 +67,10 @@ pre.bot {
 .nav ul li {
     margin: 5px 0;
 }
-button, .nav ul li a {
+button, 
+.nav ul li a, 
+a.button {
+    text-decoration: none;
     background: #EE7600;
     font-weight: bold;
     letter-spacing: 3px;
@@ -81,7 +84,8 @@ button, .nav ul li a {
     box-shadow: inset 0px 0px 0px 30px rgba(0, 0, 0, 0.0);
 }
 button:hover,
-.nav ul a:hover {
+.nav ul a:hover,
+a.button:hover {
     transition: all .2s ease-in;
     box-shadow: inset 0px 0px 0px 30px rgba(255, 255, 255, 0.3),
     0 0 5px 2px rgba(0, 0, 0, 0.2);
